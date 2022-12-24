@@ -1,0 +1,22 @@
+0.
+This was given as a freebe so I just ran the code. using ./0
+1.
+I ran ltrace on 1 and saw that rand returned a number in hex 0x6695e815 so after converting it to decimal 1721100309.
+I ran the code and got the correct secret.
+2.
+Running ltrace on 2 shows that it returned 0. searching the function on google it shows that
+when curl_easy_perform is run succesfully it's CURLE_OK.
+3.
+running ltrace shows its missing a file called "iamspecial", so i added the file but got the error for not having
+the right persmission. I used the command chmod +rwx iamspecial to give it all the persmission.
+4.
+When i ran the code it showed that i am missing a shared library so I created a shared library and to not run
+the code to make it everytime i created a makefile with 
+    gcc -c -Wall -Werror -fpic lib361.c
+	gcc -shared -o lib361.so lib361.o
+Then, ran it again but it crashed. So i ran it in ltrace, which showed me i needed two paremeters.
+but the return result was the two variables +1 so i created a int function which returned the sum of
+the two variables +1.
+int secretoperation(int x, int y) {
+    return x+y+1;
+}
